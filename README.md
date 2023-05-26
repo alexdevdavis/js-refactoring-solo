@@ -2,6 +2,8 @@
 
 ## 👋 Introduction
 
+Welcome to the exercise 😊
+
 This code produces sales information about transactions. Given an input set of data such as this:
 
 ```
@@ -22,14 +24,16 @@ Unfortunately, the code is not in an ideal state...
 
 ### 🗒️ Instructions
 
-✅ Please work through and refactor the provided code.
+✅ Please work through and refactor the provided code, keeping notes on what you change and why.
 
-✅ Keep notes on what you change and why.
+✅ We'd like you to talk through your changes with us for about 5 minutes. This will be informal and relaxed!
 
-✅ We'd like you to talk through your changes with us for between 5 and 10 minutes. We're interested in how you present your ideas, what you improved, how you improved it, and what makes each change an improvement.
+✅ We're interested in how you present your ideas, and why you made your changes - in other words, what makes for good code in your eyes?
 
-💡 You can present your changes however you prefer - screen share, presentation, live code refactoring from old to new.
+💡 You can use whatever tools you prefer - slides, live code refactoring, talking through files in VS Code.
 
 ✅ Note that all of the unit tests are currently passing, and they should continue to pass after you've made your changes.
+
+🙌 Have fun and happy coding! 😊
 
 ---
