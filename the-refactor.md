@@ -44,11 +44,11 @@ Focusing on the `processTransactions` function:
 
 ### Helping Hands 🙌
 
-- Looking next to the helper functions, I felt that `validateTransactions` was being a bit lazy, so made it perform the one job assigned to it.
+- Looking now to the helper functions, I felt that `validateTransactions` was being a bit lazy, so made it perform the one job assigned to it.
 
 - In `sortItemsByCount`, initially, I removed `itemOne > itemTwo` from the sort callback, as `-(itemOne <= itemTwo)` was sufficient to pass the tests. It then occurred to me that this wouldn't account for case-sensitivity, so swapped it out for the `String` specialist `localeCompare`. More reliable, and the right tool for the job.
 
-## 🧹 3. Tidying Up
+## 🧹 Stage 3. Tidying Up
 
 - Finally, I ensured that all callbacks use arrow functions, for readability, and used space to clearly set out the 'signposts' of data flow.
 
