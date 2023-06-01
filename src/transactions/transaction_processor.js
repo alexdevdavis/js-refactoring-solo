@@ -1,58 +1,40 @@
-var txr = [];
+function processTransactions(receivedTransactions) {
+  validateTransactions(receivedTransactions);
 
-function processTransactions(transActions) {
-	txr = [];
+  const itemsTally = receivedTransactions.reduce((tally, item) => {
+    tally[item] = (tally[item] || 0) + 1;
+    return tally;
+  }, {});
 
-	if (!validateTransactions(transActions)) {
-		throw new Error('Undefined collection of transactions');
-	}
+  const sortedItems = sortItemsByCount(itemsTally);
 
-	let txCount = {};
+  const processedTransactions = Object.keys(sortedItems).map(
+    (item) => `${item} ${sortedItems[item]}`
+  );
 
-	const numberOfTransactions = transActions.length;
-
-	for (var i = 0; i < numberOfTransactions; i++) {
-		const transaction = transActions[i];
-		txCount[transaction]
-			? (txCount[transaction] += 1)
-			: (txCount[transaction] = 1);
-	}
-
-	txCount = sortByAmountThenName(txCount);
-
-	Object.keys(txCount).forEach(function (key, index) {
-		txr[index] = `${key} ${txCount[key]}`;
-	});
-
-	return txr;
+  return processedTransactions;
 }
 
-function sortByAmountThenName(txCount) {
-	let sortedKeys = Object.keys(txCount).sort(function sortingFunction(
-		itemOne,
-		itemTwo
-	) {
-		return (
-			txCount[itemTwo] - txCount[itemOne] ||
-			itemOne > itemTwo ||
-			-(itemOne < itemTwo)
-		);
-	});
+function sortItemsByCount(unsortedTally) {
+  const sortedItems = Object.keys(unsortedTally).sort((itemOne, itemTwo) => {
+    return (
+      unsortedTally[itemTwo] - unsortedTally[itemOne] ||
+      itemOne.localeCompare(itemTwo) //order equal values alphabetically
+    );
+  });
 
-	let sortedResults = {};
-	for (let objectKey of sortedKeys) {
-		sortedResults[objectKey] = txCount[objectKey];
-	}
+  const sortedTally = {};
+  for (const item of sortedItems) {
+    sortedTally[item] = unsortedTally[item];
+  }
 
-	return sortedResults;
+  return sortedTally;
 }
 
 function validateTransactions(transactions) {
-	if (transactions === undefined) {
-		return false;
-	}
-
-	return true;
+  if (!Array.isArray(transactions)) {
+    throw new Error("Undefined collection of transactions");
+  }
 }
 
 module.exports = processTransactions;
